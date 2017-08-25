@@ -1,0 +1,19 @@
+﻿1. 添加数据库配置文件: wx\db.ini
+根据站点对应环境，将 db-prod.ini, db-test.ini, db-dev.ini 文件三选一，复制一份后重命名为 db.ini, 然后修改该文件内容为正确的配置信息：
+ db-prod.ini: 正式环境，则使用正式环境配置信息。
+ db-test.ini: 测试环境，则使用测试环境配置信息。
+ db-dev.ini:  开发环境，则使用开发环境配置信息。
+
+2. php.ini 配置
+- post_max_size = 20M
+- upload_max_filesize = 20M
+
+3. 计划任务配置
+- 发送卡券 
+- 同步商品详情至七牛
+- 订单失效处理
+分别对应三个文件，分别创建windows计划任务。
+文件所在目录：wx/cron/bat
+
+【conf.php】
+- 增加 $maxUploadSize 静态成员变量，值为5 [2017-05-25]

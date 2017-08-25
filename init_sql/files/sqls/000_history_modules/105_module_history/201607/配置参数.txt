@@ -1,0 +1,3 @@
+﻿# 添加配置参数
+wx\conf.php 文件 添加参数：
+	public static $limit_level_id = "4"; // 特定数据统计功能查看权限

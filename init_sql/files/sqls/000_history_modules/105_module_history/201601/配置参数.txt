@@ -1,0 +1,25 @@
+【wx\conf.php】
+	/* 关怀提醒间隔时间单位数据：按天(day), 按小时(hour), 按分钟(minute) */
+	public static $sms_event_interval = "day";
+	/* 订单失效时间，单位为秒  */
+	public static $order_expires = 1800;
+
+【public_html\admin2\AI9ME\Lib\Action\BaseAction.class.php】
+
+	public $component_AppID = 'wx8dfb5a94165e0aac';
+	public $component_AppSecret = '03206d9fcb28cb194f8f77a2501bec37';
+	public $ycf_wid = '211';
+	
+	
+【public_html\admin2\Common\functions.php】
+
+function ycf_config(){
+	$data['wid'] = '211';
+	return $data;
+}
+
+【yyuc\payment\weizhifu\WxPay.pub.config.php】
+	//=======【证书路径设置】=====================================
+	//证书路径,注意应该填写绝对路径
+	const SSLCERT_PATH = 'D:\phpStudy\WWW\git\yyuc\payment\weizhifu\cacert';
+	const SSLKEY_PATH = 'D:\phpStudy\WWW\git\yyuc\payment\weizhifu\cacert';

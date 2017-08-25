@@ -1,0 +1,6 @@
+﻿1. php.ini文件中需要启用以下配置行(去掉前面的分号)：
+extension=php_exif.dll
+
+2. 将 member_card_chongzhi 表中的 present_info ， present_services 字段数据反序列化后，存入到 member_card_chongzhi_service 表中
+访问地址(可多次访问)：http://域名/publish.html?dotyp=update_chongzhi_service
+(已转换后记录不再转换，直到输出更新完成，is_shift，)

@@ -1,0 +1,4 @@
+config.php
+修改域名为test.yichefu.cn
+yyuc/payment/weizhifu/WxPay.pub.config.php 
+修改支付完成回调地址

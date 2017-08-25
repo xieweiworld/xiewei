@@ -1,0 +1,5 @@
+﻿【conf.php】
+	public static $ygj_wid = "370";
+
+	/* 当前最新版本编号日期 */
+	public static $version = "2016-03-05";

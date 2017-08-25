@@ -1,0 +1,10 @@
+多账号权限脚本说明：
+1、新建表
+2、修改表结构
+3、初始化 sys_right 数据，由平台定义的菜单权限数据。
+4、初始化 sys_default_role_right 数据，由pgck定义的商户的三个默认角色，但无具体的可用权限。
+	sys_admin 的权限默认为该商户对应的客户级别的权限；
+	sys_manager 父角色为 sys_admin；
+	sys_staff 默认无权限，无父角色。
+5、初始化 user 数据 => user_staff 数据，做为 商户系统级别(is_system=1) 员工账号。
+6、初始化 customer_configs 做为商户的默认配置参数，其中 wid = 0。
