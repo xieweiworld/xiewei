@@ -34,6 +34,13 @@ def insert_album(album_id, artist_id):
         cursor.execute(sql, (album_id, artist_id))
     connection.commit()
 
+# 更新专辑状态
+def update_album(album_id):
+    with connection.cursor() as cursor:
+        sql = " update `albums` set status = 1 WHERE album_id = (%s)"
+        cursor.execute(sql, album_id)
+    connection.commit()
+
 # 保存歌手
 def insert_artist(artist_id, artist_name):
     with connection.cursor() as cursor:
@@ -51,7 +58,7 @@ def get_all_artist():
 # 获取所有专辑的 ID
 def get_all_album():
     with connection.cursor() as cursor:
-        sql = "SELECT `ALBUM_ID` FROM `albums` ORDER BY ALBUM_ID"
+        sql = "SELECT DISTINCT `album_id` FROM `albums` WHERE status = 0 ORDER BY ALBUM_ID"
         cursor.execute(sql, ())
         return cursor.fetchall()
 
