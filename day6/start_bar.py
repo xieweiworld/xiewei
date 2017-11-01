@@ -3,10 +3,10 @@
 
 import hashlib
 import requests
-import codecs
+import time
 
 
-# noinspection PyShadowingBuiltins,PyMethodParameters,PyPep8Naming,PyPep8,PyMethodMayBeStatic
+# noinspection PyShadowingBuiltins,PyMethodParameters,PyPep8Naming,PyPep8,PyMethodMayBeStatic,PyShadowingNames
 class Get_start_bar(object):
 
     # noinspection PyPep8,PyPep8
@@ -38,10 +38,10 @@ class Get_start_bar(object):
         return m.hexdigest().lower()
 
     # 获取start网站的数据
-    def get_start_data(self):
+    def get_start_data(self, count):
         all_data = []
         # 已知是1219条记录
-        for num in range(1, 2):
+        for num in range(1, count):
             sign = self.get_url(num)
             url = 'https://www.kaistart.com/api/project/list?page=' + str(num) + \
                   '&pagesize=10&markerid=&progress=&sort=&client=web'
@@ -59,7 +59,7 @@ class Get_start_bar(object):
                 all_data.append(name_info)
 
             print("第%d页抓取完毕!" % num)
-            break
+            time.sleep(1)
         return all_data
 
     # 将评论写入文本文件
@@ -71,7 +71,10 @@ class Get_start_bar(object):
 
 
 bar = Get_start_bar()
-list = bar.get_start_data()
+# noinspection PyShadowingBuiltins
+list = bar.get_start_data(122)
+bar.save_to_file(list)
+
 
 
 
