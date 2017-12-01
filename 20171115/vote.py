@@ -6,25 +6,48 @@ import json
 import time
 import re
 from bs4 import BeautifulSoup
+from PIL import ImageEnhance
+import pytesseract
+from pytesseract import *
+from PIL import Image
+from PIL import ImageEnhance
+import re
+
+filename = 'code0.gif'
+image = Image.open(filename)
+# 使用ImageEnhance可以增强图片的识别率
+#  enhancer = ImageEnhance.Contrast(image)
+# enhancer = enhancer.enhance(4)
+image = image.convert('L')
+text = pytesseract.image_to_string(image)
+# 去掉非法字符，只保留字母数字
+text = re.sub("\W", "", text)
+print(type(text))
+# image.save(filename)
+print(text + '1')
+
 
 # 请求头信息
 headers = {
-    'Accept': '*/*',
-    'Accept-Encoding': 'gzip',
-    'Accept-Language': 'zh-CN',
+    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+    'Accept-Encoding': 'gzip, deflate, sdch',
+    'Accept-Language': 'zh-CN,zh;q=0.8',
+    'Cache-Control': 'max-age=0',
     'Connection': 'keep-alive',
-    'Content-Length': '16',
-    'Content-Type': 'application/x-www-form-urlencoded',
-    'Host': 'www.dingnf.com',
-    'Origin': 'http://www.dingnf.com',
-    'Referer': 'http://www.dingnf.com/active/wxws_s',
-    'User-Agent': 'Mozilla/4.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.3029.110 Safari/537.36',
-    'X-Requested-With': 'XMLHttpRequest'
+    'Cookie': 'ICMS_VISIT_FLAG_COOKIE=2017-11-20_705551; PHPSESSID=jinihaue4ldlg8d5rna7n8ofr2',
+    'Host': 'hd.changsha.cn',
+    'Upgrade-Insecure-Requests': '1',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.104 Safari/537.36 Core/1.53.4033.400 QQBrowser/9.6.12624.400',
 }
 
 # post表单网址
-url = "http://www.dingnf.com/active/wxws_t"
-
+url = "http://hd.changsha.cn/default.php?mod=common&a=gen_gif_verify_code&sn=check_code15&n=0.16495506140959493"
+#
+# for x in range(2):
+#     img = requests.get(url=url, headers=headers).content
+#     with open('code' + str(x) + '.gif', 'wb') as f:
+#         f.write(img)
+#     time.sleep(2)
 
 # def WriteIPadress():
 #     all_url = []  # 存储IP地址的容器
@@ -47,11 +70,11 @@ url = "http://www.dingnf.com/active/wxws_t"
 #
 #
 # WriteIPadress()
-f = open("IP.txt", 'r')
-for line in f:
-    # 去掉空格
-    line = line.strip()
-    print(line)
+# f = open("IP.txt", 'r')
+# for line in f:
+#     # 去掉空格
+#     line = line.strip()
+#     print(line)
 
 # 计数器
 # count = 0
